@@ -53,7 +53,7 @@ impl Parser {
     fn parse_node(&mut self) -> dom::Node {
         match self.next_char() {
             '<' => self.parse_element(),
-            '_' => self.parse_text(),
+            _ => self.parse_text(),
         }
     }
 
@@ -122,7 +122,7 @@ pub fn parse(sourse: String) -> dom::Node {
         pos: 0,
         input: sourse,
     }
-    .parse_node();
+    .parse_nodes();
 
     if nodes.len() == 1 {
         nodes.swap_remove(0)
